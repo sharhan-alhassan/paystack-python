@@ -42,16 +42,17 @@ class Plan(PayStackBase):
         return cls().requests.get(f"plan/{plan_id}")
 
     @classmethod
-    def list(cls):
+    def list(cls, **kwargs):
         """
         Static method defined to list paystack plan.
 
-        Args:
-            No argument required.
+        Optional Args:
+        perPage: Number of subscriptions listed per page for pagination
+        page: pagination page number.
         Returns:
             Json data from paystack API.
         """
-        return cls().requests.get('plan')
+        return cls().requests.get('plan', qs=kwargs)
 
     @classmethod
     def update(cls, plan_id, **kwargs):
